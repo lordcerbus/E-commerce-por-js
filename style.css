@@ -1,0 +1,205 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(https://conteudo.imguol.com.br/p/ecommerce/impulso-digital/pub/ac/2015/08/24/id11-10-layouts-inspiradores-para-sua-loja-virtual-1440444635492_780x425.jpg);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header.cabecalho {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    border: 0.1rem solid black;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+header h4 {
+    position: absolute;
+    border: inherit;
+    padding: 1rem;
+    right: 4rem;
+    bottom: 0.2rem;
+}
+
+header h1 {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+}
+section {
+ width: 100%;
+ height: 90%;
+ position: absolute;
+ background-color: white transparent;
+ backdrop-filter: blur(8px);
+ bottom: 0;
+}
+
+section#cart-store {
+    top: 100%;
+}
+
+div.space,
+div.cart {
+    width: 80%;
+    height: 100%;
+    border: 0.1rem solid black;
+    position: absolute;
+    display: flex;
+    left: 8rem; 
+}
+
+div.cart {
+    height: 85%;
+    display: inline-block;
+}
+
+section h3 {
+    position: absolute;
+    bottom: 4rem;
+    right: 7rem;
+}
+
+section button {
+     width: 6rem;
+     height: 2rem;
+     position: absolute;
+     bottom: 1rem;
+     right: 1rem;
+ }
+
+div.space div.anuncio{
+    width: 13rem;
+    height: 16rem;
+    box-shadow: 10px 10px 10px rgb(92, 90, 90);
+    margin-top: 0.2rem; 
+    margin-left:1rem; 
+}
+
+div.anuncio div.fundo {
+    width: 8rem;
+    height: 12rem;
+    margin-top: 0.1rem;
+    margin-left: 0.5rem;
+    background-size: contain;
+    background-position:center;
+    background-repeat: no-repeat;
+    position: absolute;
+    border: inherit;
+}
+
+div.anuncio:hover,
+div.fundo:hover,
+ul li button:hover{
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+div.anuncio div.txt {
+    height: 3rem;
+    position: relative;
+    top: 0rem;
+}
+
+div.txt h5#name {
+    position: inherit;
+    left: 0.5rem;
+}
+
+div.txt h3#currency {
+    position: inherit;
+    left: 0.5rem;
+    bottom: -0.2rem;
+}
+
+div.txt h2#price {
+    position: inherit;
+    left: 2.2rem;
+    bottom: 1.3rem;
+}
+
+div.txt button#addtocart {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    font-size: 15pt;
+    color: rgb(2, 165, 10);
+}
+
+ul {
+    width: 3.8rem;
+    height: 12rem;
+    position: relative;
+    left: 8.7rem;
+    display: inline-block;
+    list-style: none;
+}
+
+ul li button {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0.1rem solid black;
+    background-color: white;
+    position: relative;
+    bottom: 0.5rem;
+    left: 0.2rem;
+    margin-top: 0.5rem ;
+    background-position: center;
+    background-size: cover;
+}
+
+div.cart h1 {
+    position: inherit;
+    left: 20rem;
+}
+div.produto {
+    width: 32rem;
+    height: 3rem;
+    border: 0.1rem solid black;
+    position: relative;
+    margin-bottom: 0.5rem;
+    top: 2rem;
+    left: 1rem;
+}
+
+div.produto h3 {
+    position: absolute;
+    top: 1rem;
+}
+
+div.produto h2 {
+    position: absolute;
+    bottom:0.5rem;
+    right: 1rem;
+}
+
+div.produto h5 {
+    position: absolute;
+    top: 1rem;
+    left: 5rem;
+}
+
+div.produto button {
+    width: 2rem;
+    position: inherit;
+    top: 0.4rem;
+    left: 19rem;
+}
+
+div.produto img {
+    width: 3rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 0.15rem;
+    left: 1rem;
+}
