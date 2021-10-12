@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>E-commerce</title>
 </head>
 <body>
     <header class="cabecalho">
-            <h1>Store</h1>
-            <h4>CartR$&nbsp;<span>0.00</span></h4>       
+            <h1><a href="#container-store">Store</a></h1>
+            <h4><a href="#cart-store">CartR$&nbsp;<span>0.00</span></a></h4>
+            <input type="search" name="search" id="search" placeholder="SEARCH..." autofocus>
+            <button type="submit" id="sbtn"><i class="fas fa-search"></i></button>      
     </header>
     <section id="container-store">
-        <div class="space" id="space-store">
-        </div>
+        <div class="space" id="space-store"></div>
+       <div class="controles">
+        <div class="prev"><i class="fas fa-angle-left"></i></div>
+        <div class="number"></div>
+        <div class="next"><i class="fas fa-angle-right"></i></div>
+       </div>
         </section>
         <section id="cart-store">
-            <div class="cart" id="cart-finish"> 
-                <h1>Welcome to you cart, check yous orders!</h1>
+            <h1>Welcome to you cart, check yous orders!</h1>
+            <div class="cart" id="cart-finish"></div>
             <h3>Total a pagar:<span id="valor"></span></h3>
-                <button type="submit">Enviar Pedido</button>
+                <button id="sendorders" type="submit">Enviar Pedido</button>
         </section>
 <script type="module" src="JS/main.js"></script>
 </body>

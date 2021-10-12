@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+:root {
+    --nova: "PT Serif";
+    --fundo:#ffc95f;
+    --header:#f55203;
+    --anuncio:#dddddd;
+    --pagina:#380202;
+    --font:#26440c;
+}
 * {
     padding: 0;
     margin: 0;
@@ -6,27 +16,31 @@
 }
 
 body {
-    background-image: url(https://conteudo.imguol.com.br/p/ecommerce/impulso-digital/pub/ac/2015/08/24/id11-10-layouts-inspiradores-para-sua-loja-virtual-1440444635492_780x425.jpg);
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: var(--fundo);
+}
+
+a {
+    text-decoration: none;
+    color: var(--font);
 }
 
 header.cabecalho {
     width: 100%;
     height: 10%;
-    position: absolute;
+    position: fixed;
     border: 0.1rem solid black;
+    background-color: var(--header);
     text-align: center;
     justify-content: center;
     display: flex;
+    z-index: 5;
 }
 
-header h4 {
+header h4{
     position: absolute;
     border: inherit;
     padding: 1rem;
-    right: 4rem;
+    right: 0.3rem;
     bottom: 0.2rem;
 }
 
@@ -35,32 +49,120 @@ header h1 {
     left: 1rem;
     bottom: 1rem;
 }
+
+header input {
+    width: 30rem;
+    height: 2rem;
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+    position: relative;
+    padding-left: 1rem;
+   top: 1.7rem;
+   left: 17rem;
+}
+
+header button {
+    width: 2rem;
+    height: 1.7rem;
+    border-radius:0.5rem;
+    border: none;
+    background-color: white;
+    position: absolute;
+    font-size: 15pt;
+    top: 1.9rem;
+    right: 10.1rem;
+}
+
 section {
  width: 100%;
- height: 90%;
+ height: 100%;
  position: absolute;
  background-color: white transparent;
  backdrop-filter: blur(8px);
  bottom: 0;
 }
 
+section#container-store div.controles {
+    width: 5rem;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 0.6rem;
+    left: 39rem;
+    background-color: rgb(255, 255, 255) transparent;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    
+}
+
+section#container-store div.controles div.next,
+section#container-store div.controles div.prev{ 
+    width: 1rem;
+    color: var(--font);
+    height: 1.5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    text-align: center;
+}
+
+section#container-store div.controles div.next {
+    right: 0;
+}
+
+section#container-store div.controles div.number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 1rem;
+}
+
+section#container-store div.controles div.number div {
+    margin-left: 0.5rem;
+    font-size: 15pt;
+    color: var(--font);
+}
+
+.active {
+    color: var(--font);
+    padding: 0.1rem;
+    border: 0.1rem solid rgb(0, 0, 0);
+    border-radius: 0.2rem;
+    border-top: none;
+    border-bottom: none;
+}
+
 section#cart-store {
-    top: 100%;
+    top: 120%;
 }
 
 div.space,
 div.cart {
     width: 80%;
-    height: 100%;
+    height: 84%;
     border: 0.1rem solid black;
+    background-color: white;
     position: absolute;
+    z-index: 3;
+}
+
+div.space {
     display: flex;
-    left: 8rem; 
+    top: 4rem;
+    left: 8rem;
+    background-color: var(--pagina);
+    flex-wrap: wrap;
 }
 
 div.cart {
-    height: 85%;
-    display: inline-block;
+    height: 80%;
+    margin-top: 8rem;
+    left: 8rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr) 0fr repeat(2, 1fr);
 }
 
 section h3 {
@@ -78,11 +180,11 @@ section button {
  }
 
 div.space div.anuncio{
-    width: 13rem;
-    height: 16rem;
-    box-shadow: 10px 10px 10px rgb(92, 90, 90);
-    margin-top: 0.2rem; 
-    margin-left:1rem; 
+    width: 19%;
+    height: 47%;
+    margin: 0.6rem 0 0 0.5rem;
+    background-color: var(--anuncio);
+    box-shadow: #000 0.5rem 0.5rem 0.5rem;
 }
 
 div.anuncio div.fundo {
@@ -90,7 +192,8 @@ div.anuncio div.fundo {
     height: 12rem;
     margin-top: 0.1rem;
     margin-left: 0.5rem;
-    background-size: contain;
+    background-color: white;
+    background-size: 8rem 9rem;
     background-position:center;
     background-repeat: no-repeat;
     position: absolute;
@@ -111,8 +214,9 @@ div.anuncio div.txt {
 }
 
 div.txt h5#name {
+    font-family:var(--nova);
     position: inherit;
-    left: 0.5rem;
+    left: 0.2rem;
 }
 
 div.txt h3#currency {
@@ -131,7 +235,7 @@ div.txt button#addtocart {
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
-    bottom: 0;
+    bottom: 0.5rem;
     font-size: 15pt;
     color: rgb(2, 165, 10);
 }
@@ -140,6 +244,7 @@ ul {
     width: 3.8rem;
     height: 12rem;
     position: relative;
+    top: 0.3rem;
     left: 8.7rem;
     display: inline-block;
     list-style: none;
@@ -148,7 +253,7 @@ ul {
 ul li button {
     width: 3.5rem;
     height: 3.5rem;
-    border: 0.1rem solid black;
+    border: none;
     background-color: white;
     position: relative;
     bottom: 0.5rem;
@@ -158,23 +263,30 @@ ul li button {
     background-size: cover;
 }
 
-div.cart h1 {
-    position: inherit;
-    left: 20rem;
+section#cart-store h1 {
+    position: absolute;
+    top: 4.2rem;
+    left: 29rem;
 }
+
+section#cart-store h3 {
+    right: 0.3rem;
+    font-size: 11pt;
+}
+
 div.produto {
     width: 32rem;
     height: 3rem;
     border: 0.1rem solid black;
     position: relative;
-    margin-bottom: 0.5rem;
-    top: 2rem;
-    left: 1rem;
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
-div.produto h3 {
+section#cart-store div.produto h3 {
     position: absolute;
     top: 1rem;
+    left: 24rem;
 }
 
 div.produto h2 {
@@ -202,4 +314,11 @@ div.produto img {
     position: absolute;
     top: 0.15rem;
     left: 1rem;
+}
+
+.remove {
+    display: none;
+}
+.hidden {
+    visibility: hidden;
 }
