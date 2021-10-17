@@ -156,15 +156,6 @@ div.space {
     flex-wrap: wrap;
 }
 
-div.cart {
-    height: 80%;
-    margin-top: 8rem;
-    left: 8rem;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr) 0fr repeat(2, 1fr);
-}
-
 section h3 {
     position: absolute;
     bottom: 4rem;
@@ -175,7 +166,7 @@ section button {
      width: 6rem;
      height: 2rem;
      position: absolute;
-     bottom: 1rem;
+     bottom: 2rem;
      right: 1rem;
  }
 
@@ -184,7 +175,7 @@ div.space div.anuncio{
     height: 47%;
     margin: 0.6rem 0 0 0.5rem;
     background-color: var(--anuncio);
-    box-shadow: #000 0.5rem 0.5rem 0.5rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem #000;
 }
 
 div.anuncio div.fundo {
@@ -197,47 +188,13 @@ div.anuncio div.fundo {
     background-position:center;
     background-repeat: no-repeat;
     position: absolute;
-    border: inherit;
+    border: 0.3rem solid black;
 }
 
 div.anuncio:hover,
-div.fundo:hover,
-ul li button:hover{
+div.fundo:hover{
     transform: scale(1.02);
     transition: 0.3s;
-}
-
-div.anuncio div.txt {
-    height: 3rem;
-    position: relative;
-    top: 0rem;
-}
-
-div.txt h5#name {
-    font-family:var(--nova);
-    position: inherit;
-    left: 0.2rem;
-}
-
-div.txt h3#currency {
-    position: inherit;
-    left: 0.5rem;
-    bottom: -0.2rem;
-}
-
-div.txt h2#price {
-    position: inherit;
-    left: 2.2rem;
-    bottom: 1.3rem;
-}
-
-div.txt button#addtocart {
-    width: 1.5rem;
-    height: 1.5rem;
-    position: absolute;
-    bottom: 0.5rem;
-    font-size: 15pt;
-    color: rgb(2, 165, 10);
 }
 
 ul {
@@ -253,7 +210,8 @@ ul {
 ul li button {
     width: 3.5rem;
     height: 3.5rem;
-    border: none;
+    border-radius: 2rem;
+    border: 0.2rem solid black;
     background-color: white;
     position: relative;
     bottom: 0.5rem;
@@ -263,36 +221,92 @@ ul li button {
     background-size: cover;
 }
 
+ul li button:hover {
+    border: 0.1rem solid black;
+    transform: scale(1.01);
+}
+
+div.anuncio div.txt {
+    height: 3rem;
+    position: relative;
+}
+
+div.txt h5#name {
+    font-family:var(--nova);
+    position: inherit;
+    left: 0.2rem;
+}
+
+div.txt h4#currency {
+    position: inherit;
+    left: 0.5rem;
+    top: 0.4rem;
+}
+
+div.txt h3#price {
+    position: inherit;
+    left: 2.2rem;
+    bottom: 1rem;
+}
+
+div.txt button#addtocart {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    font-size: 15pt;
+    border-radius: 2rem;
+    border: 0.15rem solid #000;
+    display: flex;
+    justify-content: center;
+    color: rgb(2, 165, 10);
+    transition: all 0.3s ease-in-out;
+}
+
+div.txt button#addtocart:hover {
+    transform: scale(1.1);
+    border: 0.1rem solid #000;
+
+}
+
 section#cart-store h1 {
     position: absolute;
+    color: var(--font);
     top: 4.2rem;
     left: 29rem;
 }
 
-section#cart-store h3 {
-    right: 0.3rem;
-    font-size: 11pt;
+div.cart {
+    width: 40%;
+    height: 80%;
+    margin-top: 6rem;
+    background-color: var(--pagina);
+    left: 25.5rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-row-gap: 0.7rem;
 }
 
-div.produto {
-    width: 32rem;
-    height: 3rem;
+div.cart div.produto {
+    height: 120%;
     border: 0.1rem solid black;
+    background-color: var(--anuncio);
     position: relative;
-    margin-top: 1%;
+    margin-top: 0.1rem;
     margin-left: 1%;
 }
 
-section#cart-store div.produto h3 {
+div.produto h3 {
     position: absolute;
-    top: 1rem;
-    left: 24rem;
+    top: 0.8rem;
+    left: 18rem;
 }
 
 div.produto h2 {
     position: absolute;
-    bottom:0.5rem;
-    right: 1rem;
+    bottom:0.3rem;
+    right: 8rem;
 }
 
 div.produto h5 {
@@ -304,15 +318,17 @@ div.produto h5 {
 div.produto button {
     width: 2rem;
     position: inherit;
-    top: 0.4rem;
-    left: 19rem;
+    color: red;
+    border-radius: 2rem;
+    top: 0.3rem;
+    left: 30rem;
 }
 
 div.produto img {
     width: 3rem;
     height: 2.5rem;
     position: absolute;
-    top: 0.15rem;
+    top: 0.05rem;
     left: 1rem;
 }
 

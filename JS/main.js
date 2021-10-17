@@ -13,8 +13,6 @@ const data1 = await requestJSON('./JS/teste.json') // variavel que retorna o obj
 let armazenamento = sessionStorage // usaremos .setitem() e .getitem()
 let arraydeprodutos = data1["products"]
 
-// ======================================================================================================================
-
 //                                                   controles
 
 let perPage = 10 // Numero de elementos por pagina
@@ -76,10 +74,9 @@ const controls = {
 
 const buttons = {
     element: html.get('.number'), // elemento que recebe os botões
-
+    element2: html.get('.numbers'),
  create(number) { 
      const button = document.createElement('div')
-
      button.innerHTML = number;
 
      if(state.page == number){
@@ -93,6 +90,7 @@ const buttons = {
      })
     
      buttons.element.appendChild(button)
+
  }, // função que cria os botoes
  update() {
     buttons.element.innerHTML = " "
@@ -131,8 +129,8 @@ const anunciotemplate = `<div class="fundo" id="cart-fundo"></div>
                     </ul>
                     <div class="txt">
                         <h5 id="name"></h5>
-                        <h3 id="currency"></h3>
-                        <h2 id="price"></h2>
+                        <h4 id="currency"></h3>
+                        <h3 id="price"></h2>
                         <button id="addtocart" type="submit">+</button>
                     </div>`
 
@@ -241,13 +239,12 @@ let principal = document.querySelectorAll('#cart-fundo')
             gerationcart.classList.add('produto')
             cartofprice.appendChild(gerationcart)
             gerationcart.innerHTML = carttemplate
-                 
+                 listadecompras()
     // Somatoria de valores 
                     valorsomar.push(preco) // puxando o valor para dentro do sessionstorage
             var totalpreco = Number(valorsomar.reduce((total, currentElement) => total + currentElement,0)) // reduce sendo usada para somar valores 
                     armazenamento.setItem('valor',totalpreco) // seta o valor no sessionstorage
                     document.querySelector('.cabecalho').querySelector('h4').querySelector('span').innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
-                    document.querySelector('#valor').innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
     // Remoção do cart 
                     var removecart = document.querySelectorAll('#removecart')
             removecart.forEach((e)=>{
@@ -256,13 +253,23 @@ let principal = document.querySelectorAll('#cart-fundo')
                         var cartremove = e.target.closest('.produto') // pega a div principal do anuncio 
                         var precoremove = cartremove.querySelector('h2').textContent // pega o preço do anuncio diretamente no local onde event acontece
                         cartofprice.removeChild(cartremove) //  remove a div
+                        const lista = html.get('#cart-store .cart')
+                        var tamanholista = lista.children.length * 7.5
+                        var tamanhoitem = lista.children.length
+                        if (tamanhoitem >= 1) {
+                            lista.style.display = 'grid'
+                            lista.style.height = `${tamanholista}%`
+                        } 
+                        if (tamanhoitem < 1) {
+                            lista.style.display = 'none'
+                        }          
     // Subtração de valores     
                         var ind = valorsomar.findIndex(i=> i == Number(precoremove)) // mostra o indice do elemento no array  
                         valorsomar.splice(ind,1) // remove o item que corresponde ao index indicado em 'ind'
                         var totalpreco = Math.abs(Number(valorsomar.reduce((total ,currentElement ) => total - currentElement,0))) // faz a subtraça~de valores pelo reduce e converte de negativo para positivo pelo math.abs()
                         armazenamento.setItem('valor',totalpreco) // seta o valor no sessionstorage
                         document.querySelector('.cabecalho').querySelector('h4').querySelector('span').innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
-                        document.querySelector('#valor').innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
+
                     }
              })      
         }
@@ -270,10 +277,6 @@ let principal = document.querySelectorAll('#cart-fundo')
     })
     }
 }
-
-//===============================================================================================================
-
-
 
 // -----------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -296,7 +299,42 @@ function mostrarsearch(e){
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
+//                                                     Função de ajuste da lista de compras                                  //
+   function listadecompras() {
+    let title = html.get('#cart-store h1')
+    const lista = html.get('#cart-store .cart')
+    var tamanholista = lista.children.length * 7.5
+    var tamanhoitem = lista.children.length
+    console.log(tamanholista)
+    if (tamanhoitem < 1 ){
+        lista.style.display = 'none'
+        title.innerHTML = 'Empty cart, plis return to store'
+    } else {
+        title.innerHTML = 'Welcome to you cart, check yous orders!'
+    }
+        if (tamanhoitem >= 1) {
+            lista.style.display = 'grid'
+            lista.style.height = `${tamanholista}%`
+        }
+         //  desenvolver logica que a cada 2 itens 
+         // a lista cresça 9% para um total de 20 itens
+    
+}
+//                                                             Requerimento                                                       //
+  
+//                                                               Função de envio                                                  //
+html.get('#sendorders').addEventListener('click',enviarpedido)
+function enviarpedido() {
+    var finallist = document.querySelector('.cart')
+    finallist.innerHTML = ''
+    finallist.style.display = 'none'
+    
+alert('Pedido enviado!')
+}
+
+//                                                     Escopo de funçoes constantes                                                  //
 function update() {
+    listadecompras()
     list.update()
     buttons.update()
     controls.createListeners()
