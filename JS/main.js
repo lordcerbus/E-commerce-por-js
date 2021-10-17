@@ -269,6 +269,7 @@ let principal = document.querySelectorAll('#cart-fundo')
                         var totalpreco = Math.abs(Number(valorsomar.reduce((total ,currentElement ) => total - currentElement,0))) // faz a subtraça~de valores pelo reduce e converte de negativo para positivo pelo math.abs()
                         armazenamento.setItem('valor',totalpreco) // seta o valor no sessionstorage
                         mostravalor()
+                        titlelist()
 
                     }
              })      
@@ -307,13 +308,12 @@ const lista = html.get('#cart-store .cart')
     var tamanhoitem = lista.children.length
     if (tamanhoitem < 1 ){
         lista.style.display = 'none'
-        title.innerHTML = 'Empty cart, plis return to store'
-    } else {
-        title.innerHTML = 'Welcome to you cart, check yous orders!'
+        title.innerHTML = 'Empty cart, please return to store'
     }
         if (tamanhoitem >= 1) {
             lista.style.display = 'grid'
             lista.style.height = `${tamanholista}%`
+            title.innerHTML = 'Welcome to you cart, check yous orders!'
         }
          //  desenvolver logica que a cada 2 itens 
          // a lista cresça 9% para um total de 20 itens
@@ -325,11 +325,11 @@ const lista = html.get('#cart-store .cart')
 html.get('#sendorders').addEventListener('click',enviarpedido)
 function enviarpedido() {
     var finallist = document.querySelector('.cart')
-    title.innerHTML = 'Empty cart, plis return to store'
     finallist.innerHTML = ''
     finallist.style.display = 'none'
     armazenamento.clear()
     mostravalor()
+    titlelist()
 
 alert('Pedido enviado!')
 }
@@ -338,7 +338,7 @@ alert('Pedido enviado!')
  
 function titlelist() {
     if (lista.children.length < 1){
-    title.innerHTML = 'Empty cart, plis return to store'
+    title.innerHTML = 'Empty cart, please return to store'
 } else {
     title.innerHTML = 'Welcome to you cart, check yous orders!'
 }

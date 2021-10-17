@@ -17,6 +17,7 @@
 
 body {
     background-color: var(--fundo);
+    overflow-y:hidden;
 }
 
 a {
