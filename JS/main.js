@@ -242,9 +242,9 @@ let principal = document.querySelectorAll('#cart-fundo')
                  listadecompras()
     // Somatoria de valores 
                     valorsomar.push(preco) // puxando o valor para dentro do sessionstorage
-            var totalpreco = Number(valorsomar.reduce((total, currentElement) => total + currentElement,0)) // reduce sendo usada para somar valores 
+                    var totalpreco = Number(valorsomar.reduce((total, currentElement) => total + currentElement,0)) // reduce sendo usada para somar valores 
                     armazenamento.setItem('valor',totalpreco) // seta o valor no sessionstorage
-                    document.querySelector('.cabecalho').querySelector('h4').querySelector('span').innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
+                    mostravalor()
     // Remoção do cart 
                     var removecart = document.querySelectorAll('#removecart')
             removecart.forEach((e)=>{
@@ -268,7 +268,7 @@ let principal = document.querySelectorAll('#cart-fundo')
                         valorsomar.splice(ind,1) // remove o item que corresponde ao index indicado em 'ind'
                         var totalpreco = Math.abs(Number(valorsomar.reduce((total ,currentElement ) => total - currentElement,0))) // faz a subtraça~de valores pelo reduce e converte de negativo para positivo pelo math.abs()
                         armazenamento.setItem('valor',totalpreco) // seta o valor no sessionstorage
-                        document.querySelector('.cabecalho').querySelector('h4').querySelector('span').innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
+                        mostravalor()
 
                     }
              })      
@@ -300,12 +300,11 @@ function mostrarsearch(e){
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
 //                                                     Função de ajuste da lista de compras                                  //
+let title = html.get('#cart-store h1')
+const lista = html.get('#cart-store .cart')
    function listadecompras() {
-    let title = html.get('#cart-store h1')
-    const lista = html.get('#cart-store .cart')
     var tamanholista = lista.children.length * 7.5
     var tamanhoitem = lista.children.length
-    console.log(tamanholista)
     if (tamanhoitem < 1 ){
         lista.style.display = 'none'
         title.innerHTML = 'Empty cart, plis return to store'
@@ -326,14 +325,34 @@ function mostrarsearch(e){
 html.get('#sendorders').addEventListener('click',enviarpedido)
 function enviarpedido() {
     var finallist = document.querySelector('.cart')
+    title.innerHTML = 'Empty cart, plis return to store'
     finallist.innerHTML = ''
     finallist.style.display = 'none'
-    
+    armazenamento.clear()
+    mostravalor()
+
 alert('Pedido enviado!')
 }
 
+//                                                      Função do titulo da lista 
+ 
+function titlelist() {
+    if (lista.children.length < 1){
+    title.innerHTML = 'Empty cart, plis return to store'
+} else {
+    title.innerHTML = 'Welcome to you cart, check yous orders!'
+}
+}
+
+function mostravalor() {
+    document.querySelector('.cabecalho')
+    .querySelector('h4')
+    .querySelector('span')
+    .innerHTML = Number(armazenamento.getItem('valor')).toFixed(2) // exibição do valor
+} 
 //                                                     Escopo de funçoes constantes                                                  //
 function update() {
+    titlelist()
     listadecompras()
     list.update()
     buttons.update()
